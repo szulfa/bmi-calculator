@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi calculator</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            display:grid;
+            place-items: center;
+            height: 100vh;
+        }
+        button{
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>BMI CALCULATOR</h1>
+        <form action="">
+            <label for="w">body weight in kgs</label>
+            <input type="number" id="w" required><br><br>
+            <label for="h">body height in cms</label>
+            <input type="number" id="h" required><br><br>
+        </form><br><br>
+        <button type="submit" id="s">check bmi</button><br><br>
+        <div id="bmi"></div><br><br>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('s').addEventListener("click",myFun);
+        function myFun(){
+            var w=document.getElementById('w').value;
+            var h=document.getElementById('h').value;
+            var bmi=w/(h/100*h/100);
+            document.getElementById('bmi').innerHTML=bmi.toFixed(2);
+            if(w>=1 && h>=1){
+                if(bmi>=18.5 && bmi<=24.9){
+                    document.getElementById('result').innerHTML="fit";
+                }
+                if(bmi<=18.4){
+                    document.getElementById('result').innerHTML="thin";
+                }
+                if(bmi>=25){
+                    document.getElementById('result').innerHTML="obesity"
+                }
+            }
+            else{
+                document.getElementById('bmi').innerHTML="";
+                document.getElementById('result').innerHTML="";
+            }
+        }
+    </script>
+</body>
+</html>
